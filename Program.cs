@@ -2,6 +2,7 @@
 using ProFinancialTracking.Services;
 
 bool running = true;
+FileManager.LoadData();
 
 while (running)
 {
@@ -34,9 +35,12 @@ while (running)
             break;
 
         case "5":
-            running = false;
+            SummaryUI.DisplayFinancialSummary();
             break;
 
+        case "6":
+            running = false;
+            break;
         default:
             Console.WriteLine("Invalid Option.");
             break;

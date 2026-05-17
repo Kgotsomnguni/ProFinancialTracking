@@ -10,7 +10,8 @@ public static class MenuManager
         Console.WriteLine("2. View Income");
         Console.WriteLine("3. Add Expense");
         Console.WriteLine("4. View Expense");
-        Console.WriteLine("5. Exit");
+        Console.WriteLine("5. Financial Summary");
+        Console.WriteLine("6. Exit");
         Console.WriteLine("======================");
         Console.WriteLine("Select an option: ");
     }

@@ -28,6 +28,7 @@ public static class IncomeService
         income.Date = DateTime.Now;
 
         AppData.Incomes.Add(income);
+        FileManager.SaveData();
 
         Console.WriteLine();
         Console.WriteLine("Income Added Successfully.");

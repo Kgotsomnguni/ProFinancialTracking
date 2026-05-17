@@ -32,6 +32,7 @@ public static class ExpenseService
         expense.Importance = int.Parse(Console.ReadLine() ?? "1");
 
         AppData.Expenses.Add(expense);
+        FileManager.SaveData();
 
         Console.WriteLine();
         Console.WriteLine("Expense Added Successfully.");
