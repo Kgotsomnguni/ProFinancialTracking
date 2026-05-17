@@ -29,6 +29,7 @@ public static class BudgetService
     public static decimal GetPercentage(decimal ExpenseTotal,decimal IncomeTotal)
     {
         decimal percentage = ((ExpenseTotal / IncomeTotal)*100);
+        percentage = Math.Round(percentage,2);
         return percentage;
     }
 }

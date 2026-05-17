@@ -1,38 +1,40 @@
 using ProFinancialTracking.Models;
 using ProFinancialTracking.Data;
+using ProFinancialTracking.Helpers;
 
 namespace ProFinancialTracking.Services;
 
 public static class IncomeService
 {
-    public static void AddIncome()
-    {
-        Console.Clear();
+   public static void AddIncome()
+{
+    Console.Clear();
 
-        Console.WriteLine("===== ADD INCOME =====");
+    Console.WriteLine("===== ADD INCOME =====");
 
-        Income income = new();
+    Income income = new();
 
-        Console.Write("Income Name: ");
-        income.Name = Console.ReadLine() ?? "";
+    income.Name =
+        InputHelper.GetRequiredString("Income Name: ");
 
-        Console.Write("Budget Amount: ");
-        income.BudgetAmount = decimal.Parse(Console.ReadLine() ?? "0");
+    income.BudgetAmount =
+        InputHelper.GetDecimalInput("Budget Amount: ");
 
-        Console.Write("Actual Amount: ");
-        income.ActualAmount = decimal.Parse(Console.ReadLine() ?? "0");
+    income.ActualAmount =
+        InputHelper.GetDecimalInput("Actual Amount: ");
 
-        Console.Write("Frequency: ");
-        income.Frequency = Console.ReadLine() ?? "";
+    income.Frequency =
+        InputHelper.GetRequiredString("Frequency: ");
 
-        income.Date = DateTime.Now;
+    income.Date = DateTime.Now;
 
-        AppData.Incomes.Add(income);
-        FileManager.SaveData();
+    AppData.Incomes.Add(income);
 
-        Console.WriteLine();
-        Console.WriteLine("Income Added Successfully.");
-    }
+    FileManager.SaveData();
+
+    Console.WriteLine();
+    Console.WriteLine("Income Added Successfully.");
+}
 
     public static void ViewIncomes()
     {
