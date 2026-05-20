@@ -39,10 +39,19 @@ while (running)
             break;
 
         case "6":
-            running = false;
+            ExpenseService.SearchExpenses();
             break;
-        default:
-            Console.WriteLine("Invalid Option.");
+
+        case "7":
+            ExpenseService.FilterByCategory();
+            break;
+
+        case "8":
+            ExpenseService.SortByExpenseAmount();
+            break;
+
+        case "9":
+            running = false;
             break;
     }
 

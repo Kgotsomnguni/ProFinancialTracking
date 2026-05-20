@@ -1,1 +1,10 @@
-[{"Name":"J","BudgetAmount":500,"ActualAmount":500,"Category":"constants","Frequency":"monthly","Importance":5}]
+[
+  {
+    "Name": "J",
+    "BudgetAmount": 500,
+    "ActualAmount": 500,
+    "Category": "constants",
+    "Frequency": "monthly",
+    "Importance": 5
+  }
+]

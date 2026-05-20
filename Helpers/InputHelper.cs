@@ -1,3 +1,5 @@
+using Microsoft.VisualBasic;
+
 namespace ProFinancialTracking.Helpers;
 
 public static class InputHelper
@@ -20,6 +22,9 @@ public static class InputHelper
         }
     }
 
+
+
+
     public static int GetIntInput(string prompt)
     {
         int value;
@@ -38,9 +43,11 @@ public static class InputHelper
     }
     public static string GetRequiredString(string prompt)
     {
-        while (true)
+
+            while (true)
         {
             Console.Write(prompt);
+
             string input = Console.ReadLine() ?? "";
             if (!string.IsNullOrWhiteSpace(input))
             {
@@ -49,5 +56,17 @@ public static class InputHelper
             Console.WriteLine("Input cannot be empty. Please enter a valid string.");
         }
 
+
     }
+    public static void CheckKeyPress()
+    {
+        ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+        if (keyInfo.Key == ConsoleKey.Escape)
+        {
+            return;
+        }
+    }
+
+
+
 }
