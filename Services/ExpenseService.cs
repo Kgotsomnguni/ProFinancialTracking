@@ -189,4 +189,42 @@ public static class ExpenseService
         Console.WriteLine();
         Console.WriteLine("Expense updated successfully.");
     }
+
+    public static void DeleteExpense()
+    {
+        Console.Clear();
+        ViewExpenses();
+
+        if (AppData.Expenses.Count == 0)
+            return;
+        Console.WriteLine();
+
+        int index = InputHelper.GetIntInput("Enter expense index to delete: ");
+
+        if (index < 0 || index >= AppData.Expenses.Count)
+        {
+            Console.WriteLine("Invalid index");
+        }
+        Expense expense = AppData.Expenses[index];
+        Console.WriteLine();
+        Console.WriteLine($"Are you sure you want to delete '{expense.Name}' ?");
+
+        Console.Write("Type YES to confirm: ");
+
+        string confirmation = Console.ReadLine() ?? "";
+
+        if (confirmation.ToUpper() == "YES")
+        {
+            AppData.Expenses.RemoveAt(index);
+
+            FileManager.SaveData();
+
+            Console.WriteLine("Expense Deleted");
+        }
+        else
+        {
+            Console.WriteLine("Delete cancelled");
+        }
+
+    }
 }
