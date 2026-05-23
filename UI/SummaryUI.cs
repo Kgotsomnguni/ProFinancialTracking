@@ -17,6 +17,16 @@ public static class SummaryUI
 
         decimal remainingBalance = BudgetService.GetRemainingBalance();
 
+        decimal savingsRate = BudgetService.GetSavingsRate();
+        decimal expensePercentage = BudgetService.GetExpensePercentage();
+        string highestExpense = BudgetService.GetHighestExpense();
+
+        decimal highestExpenseAmount =
+    BudgetService.GetHighestExpenseAmount();
+
+        string financialHealth =
+            BudgetService.GetFinancialHealth();
+
 
         Console.WriteLine("========== FINANCIAL SUMMARY ==========");
         Console.WriteLine($"Total Income Budget   :   R{totalIncomeBudget}");
@@ -25,7 +35,7 @@ public static class SummaryUI
 
         Console.WriteLine($"Total Expense Budget   :   R{totalExpenseBudget}");
         Console.WriteLine($"Total Expense Actual   :   R{totalExpenseActual}");
-       Console.WriteLine($"Expenses use {BudgetService.GetPercentage(totalExpenseActual, totalIncomeActual)}% of your income");
+        Console.WriteLine($"Expenses use {BudgetService.GetPercentage(totalExpenseActual, totalIncomeActual)}% of your income");
 
         if (totalExpenseActual > totalExpenseBudget)
         {
@@ -42,6 +52,34 @@ public static class SummaryUI
         }
 
 
+        Console.WriteLine();
+        Console.WriteLine("==========  ANALYSIS ==========");
+        Console.WriteLine($"Savings Rate: {savingsRate:F2}:%");
+        Console.WriteLine($"Expense Usage: {expensePercentage:F2}:%");
+
+        Console.WriteLine($"Highest Expense: {highestExpense}");
+        Console.WriteLine($"Highest Expense Amount: R{highestExpenseAmount}");
+        Console.WriteLine($"Financial Health: {financialHealth}");
+
+
+
+        Console.WriteLine("==========  RECOMMENDATIONS ==========");
+
+        if (expensePercentage > 80)
+        {
+            Console.WriteLine(" - Your expenses are consuming most of your income.");
+        }
+
+        if (savingsRate < 10)
+        {
+            Console.WriteLine(" - Try reducing non-essential spending.");
+        }
+
+        if (financialHealth == "Excellent")
+        {
+            Console.WriteLine(
+                "- Your financial health is excellent.");
+        }
     }
 
 }

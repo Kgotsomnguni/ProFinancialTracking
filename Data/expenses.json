@@ -1,10 +1,10 @@
 [
   {
-    "Name": "J",
-    "BudgetAmount": 500,
-    "ActualAmount": 500,
-    "Category": "constants",
+    "Name": "TruWorths Account",
+    "BudgetAmount": 200,
+    "ActualAmount": 200,
+    "Category": "Bills",
     "Frequency": "monthly",
-    "Importance": 5
+    "Importance": 3
   }
 ]

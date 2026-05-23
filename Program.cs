@@ -39,18 +39,34 @@ while (running)
             break;
 
         case "6":
-            ExpenseService.SearchExpenses();
+            ExpenseService.EditExpense();
             break;
 
         case "7":
-            ExpenseService.FilterByCategory();
+            ExpenseService.DeleteExpense();
             break;
 
         case "8":
-            ExpenseService.SortByExpenseAmount();
+            IncomeService.EditIncome();
             break;
 
         case "9":
+            IncomeService.DeleteIncome();
+            break;
+
+        case "10":
+            ExpenseService.SearchExpenses();
+            break;
+
+        case "11":
+            ExpenseService.FilterByCategory();
+            break;
+
+        case "12":
+            ExpenseService.SortByExpenseAmount();
+            break;
+
+        case "13":
             running = false;
             break;
     }

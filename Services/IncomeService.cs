@@ -48,9 +48,11 @@ public static class IncomeService
             return;
         }
 
-        foreach (var income in AppData.Incomes)
+        for(int i = 0; i <AppData.Incomes.Count; i++)
         {
+            var income = AppData.Incomes[i];
             Console.WriteLine("--------------------------------");
+            Console.WriteLine($"Index: {i}");
             Console.WriteLine($"Name: {income.Name}");
             Console.WriteLine($"Budget: R{income.BudgetAmount}");
             Console.WriteLine($"Actual: R{income.ActualAmount}");
@@ -135,7 +137,7 @@ public static class IncomeService
 
         if (confirmation.ToUpper() == "YES")
         {
-            AppData.Expenses.RemoveAt(index);
+            AppData.Incomes.RemoveAt(index);
 
             FileManager.SaveData();
 

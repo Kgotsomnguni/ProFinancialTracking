@@ -44,7 +44,7 @@ public static class InputHelper
     public static string GetRequiredString(string prompt)
     {
 
-            while (true)
+        while (true)
         {
             Console.Write(prompt);
 
