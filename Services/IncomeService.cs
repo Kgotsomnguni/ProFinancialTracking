@@ -10,7 +10,7 @@ public static class IncomeService
     {
         Console.Clear();
 
-        Console.WriteLine("===== ADD INCOME =====");
+        ConsoleHelper.DisplayHeader("ADD INCOME");
 
         Income income = new();
 
@@ -40,7 +40,8 @@ public static class IncomeService
     {
         Console.Clear();
 
-        Console.WriteLine("===== ALL INCOMES =====");
+        ConsoleHelper.DisplayHeader("ALL INCOMES");
+
 
         if (AppData.Incomes.Count == 0)
         {

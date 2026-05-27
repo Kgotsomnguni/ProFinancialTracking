@@ -1,3 +1,5 @@
+using ProFinancialTracking.Helpers;
+
 namespace ProFinancialTracking.UI;
 
 public static class MenuManager
@@ -5,7 +7,7 @@ public static class MenuManager
     public static void DisplayMainMenu()
     {
         Console.WriteLine();
-        Console.WriteLine("=========== MAIN MENU ===========");
+        ConsoleHelper.DisplayHeader("MAIN MENU");
         Console.WriteLine("1. Add Income");
         Console.WriteLine("2. View Income");
         Console.WriteLine("3. Add Expense");

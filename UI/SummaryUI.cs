@@ -1,5 +1,6 @@
 
 using ProFinancialTracking.Services;
+using ProFinancialTracking.Helpers;
 
 namespace ProFinancialTracking.UI;
 
@@ -28,7 +29,7 @@ public static class SummaryUI
             BudgetService.GetFinancialHealth();
 
 
-        Console.WriteLine("========== FINANCIAL SUMMARY ==========");
+        ConsoleHelper.DisplayHeader("FINANCIAL SUMMARY");
         Console.WriteLine($"Total Income Budget   :   R{totalIncomeBudget}");
         Console.WriteLine($"Total Income Actual   :   R{totalIncomeActual}");
         Console.WriteLine();
@@ -53,7 +54,8 @@ public static class SummaryUI
 
 
         Console.WriteLine();
-        Console.WriteLine("==========  ANALYSIS ==========");
+        ConsoleHelper.DisplayHeader("ANALYSIS");
+
         Console.WriteLine($"Savings Rate: {savingsRate:F2}:%");
         Console.WriteLine($"Expense Usage: {expensePercentage:F2}:%");
 
@@ -63,7 +65,8 @@ public static class SummaryUI
 
 
 
-        Console.WriteLine("==========  RECOMMENDATIONS ==========");
+        ConsoleHelper.DisplayHeader(" RECOMMENDATIONS ");
+
 
         if (expensePercentage > 80)
         {

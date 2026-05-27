@@ -1,18 +1,15 @@
 ﻿using ProFinancialTracking.UI;
 using ProFinancialTracking.Services;
+using ProFinancialTracking.Helpers;
 
 bool running = true;
 FileManager.LoadData();
 
 while (running)
 {
-    Console.Clear();
+    ConsoleHelper.DisplayHeader("PRO FINANCIAL TRACKING V1.0");
 
-    Console.WriteLine("================================");
-    Console.WriteLine("PRO FINANCIAL TRACKING v1.0");
-    Console.WriteLine("================================");
-
-    MenuManager.DisplayMainMenu();
+   MenuManager.DisplayMainMenu();
 
     string choice = Console.ReadLine() ?? "";
 
@@ -71,7 +68,5 @@ while (running)
             break;
     }
 
-    Console.WriteLine();
-    Console.WriteLine("Press any key to continue...");
-    Console.ReadKey();
+    ConsoleHelper.Pause();
 }

@@ -11,7 +11,7 @@ public static class ExpenseService
     {
         Console.Clear();
 
-        Console.WriteLine("===== ADD EXPENSE =====");
+        ConsoleHelper.DisplayHeader("Add Expense");
 
         Expense expense = new();
 
@@ -31,7 +31,19 @@ public static class ExpenseService
         expense.Frequency = Console.ReadLine() ?? "";
 
         Console.Write("Importance (1-5): ");
-        expense.Importance = int.Parse(Console.ReadLine() ?? "1");
+        // expense.Importance = int.Parse(Console.ReadLine() ?? "1");
+        expense.Importance = InputHelper.GetIntInput("Importance (1-5)");
+
+        while (expense.Importance < ApplicationConstants.MinImportanceLevel || expense.Importance > ApplicationConstants.MaxImportanceLevel)
+        {
+            Console.WriteLine(
+                $"Importance must be between " +
+                $"{ApplicationConstants.MinImportanceLevel} " +
+                $"and {ApplicationConstants.MaxImportanceLevel}");
+
+            expense.Importance = InputHelper.GetIntInput("Importance (1-5):");
+
+        }
 
         AppData.Expenses.Add(expense);
         FileManager.SaveData();
@@ -44,7 +56,9 @@ public static class ExpenseService
     {
         Console.Clear();
 
-        Console.WriteLine("===== ALL EXPENSES =====");
+        //Console.WriteLine("===== ALL EXPENSES =====");
+        ConsoleHelper.DisplayHeader("ALL EXPENSES");
+
 
         if (AppData.Expenses.Count == 0)
         {
@@ -54,15 +68,7 @@ public static class ExpenseService
 
         for (int i = 0; i < AppData.Expenses.Count; i++)
         {
-            var expense = AppData.Expenses[i];
-            Console.WriteLine("--------------------------------");
-            Console.WriteLine($"Index: {i}");
-            Console.WriteLine($"Name: {expense.Name}");
-            Console.WriteLine($"Budget: R{expense.BudgetAmount}");
-            Console.WriteLine($"Actual: R{expense.ActualAmount}");
-            Console.WriteLine($"Category: {expense.Category}");
-            Console.WriteLine($"Frequency: {expense.Frequency}");
-            Console.WriteLine($"Importance: {expense.Importance}");
+            DisplayExpense(AppData.Expenses[i], i);
         }
     }
     public static void SearchExpenses()
@@ -225,6 +231,20 @@ public static class ExpenseService
         {
             Console.WriteLine("Delete cancelled");
         }
+
+    }
+
+    private static void DisplayExpense(Expense expense, int index)
+    {
+        ConsoleHelper.DisplaySeparator();
+
+        Console.WriteLine($"Index: {index}");
+        Console.WriteLine($"Name: {expense.Name}");
+        Console.WriteLine($"Budget: R{expense.BudgetAmount}");
+        Console.WriteLine($"Actual: R{expense.ActualAmount}");
+        Console.WriteLine($"Category: {expense.Category}");
+        Console.WriteLine($"Frequency: {expense.Frequency}");
+        Console.WriteLine($"Importance: {expense.Importance}");
 
     }
 }
