@@ -11,6 +11,13 @@ public static class ConsoleHelper
         Console.WriteLine("================================");
         Console.WriteLine();
     }
+    public static void DisplaySection(string title)
+{
+    Console.WriteLine();
+    Console.WriteLine("- - - - - - - - - - - - - - - - ");
+    Console.WriteLine(title.ToUpper());
+    Console.WriteLine("- - - - - - - - - - - - - - - - ");
+}
 
     public static void DisplaySeparator()
     {

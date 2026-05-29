@@ -15,17 +15,16 @@ public static class ExpenseService
 
         Expense expense = new();
 
-        Console.Write("Expense Name: ");
-        expense.Name = Console.ReadLine() ?? "";
+        expense.Name =  InputHelper.GetRequiredString("Expense Name: ");
 
-        Console.Write("Budget Amount: ");
-        expense.BudgetAmount = decimal.Parse(Console.ReadLine() ?? "0");
+        expense.BudgetAmount = InputHelper.GetDecimalInput("Budget Amount: ");
 
-        Console.Write("Actual Amount: ");
-        expense.ActualAmount = decimal.Parse(Console.ReadLine() ?? "0");
+        // Console.Write("Actual Amount: ");
+        // expense.ActualAmount = decimal.Parse(Console.ReadLine() ?? "0");
+        expense.ActualAmount = 0;
+        expense.ActualEntered = false;
 
-        Console.Write("Category: ");
-        expense.Category = Console.ReadLine() ?? "";
+        expense.Category = InputHelper.GetRequiredString("Category: ");
 
         Console.Write("Frequency: ");
         expense.Frequency = Console.ReadLine() ?? "";
@@ -62,7 +61,8 @@ public static class ExpenseService
 
         if (AppData.Expenses.Count == 0)
         {
-            Console.WriteLine("No expenses found.");
+            Console.WriteLine("No expenses available yet.");
+            Console.WriteLine("Start by Adding an expense");
             return;
         }
 
@@ -74,6 +74,12 @@ public static class ExpenseService
     public static void SearchExpenses()
     {
         Console.Clear();
+        if (AppData.Expenses.Count == 0)
+        {
+            Console.WriteLine("No expenses available yet.");
+            Console.WriteLine("Start by Adding an expense");
+            return;
+        }
 
         Console.Write("Enter expense name to search: ");
 
@@ -96,7 +102,7 @@ public static class ExpenseService
         {
             Console.WriteLine("--------------------------------");
             Console.WriteLine($"Name: {expense.Name}");
-            Console.WriteLine($"Amount: {expense.ActualAmount}");
+           Console.WriteLine($"Amount: R{expense.ActualAmount:N2}");
             Console.WriteLine($"Category: {expense.Category}");
         }
     }
@@ -181,14 +187,41 @@ public static class ExpenseService
         Console.Write($"Actual Amount ({expense.ActualAmount}): ");
         string actualInput = Console.ReadLine() ?? "";
 
-        if (decimal.TryParse(actualInput, out decimal actual))
-            expense.ActualAmount = actual;
+       if (decimal.TryParse(actualInput, out decimal actual))
+{
+    expense.ActualAmount = actual;
+    expense.ActualEntered = true;
+}
 
         Console.Write($"Category ({expense.Category}): ");
         string category = Console.ReadLine() ?? "";
 
         if (!string.IsNullOrWhiteSpace(category))
             expense.Category = category;
+
+        Console.Write($"Frequency ({expense.Frequency}): ");
+        string frequency = Console.ReadLine() ?? "";
+
+        if (!string.IsNullOrWhiteSpace(frequency))
+            expense.Frequency = frequency;
+
+        Console.Write($"Importance ({expense.Importance}): ");
+        string importanceInput = Console.ReadLine() ?? "";
+
+        if (int.TryParse(importanceInput, out int importance))
+        {
+            if (importance >= ApplicationConstants.MinImportanceLevel && importance <= ApplicationConstants.MaxImportanceLevel)
+            {
+                expense.Importance = importance;
+            }
+            else
+            {
+                Console.WriteLine($"Importance must be between {ApplicationConstants.MinImportanceLevel} and {ApplicationConstants.MaxImportanceLevel}. Keeping previous value.");
+            }
+        }
+
+
+
 
         FileManager.SaveData();
 
@@ -210,6 +243,7 @@ public static class ExpenseService
         if (index < 0 || index >= AppData.Expenses.Count)
         {
             Console.WriteLine("Invalid index");
+            return;
         }
         Expense expense = AppData.Expenses[index];
         Console.WriteLine();
@@ -246,5 +280,50 @@ public static class ExpenseService
         Console.WriteLine($"Frequency: {expense.Frequency}");
         Console.WriteLine($"Importance: {expense.Importance}");
 
+
+Console.WriteLine("========================================");
+    Console.WriteLine($"EXPENSE RECORD #{index}");
+    Console.WriteLine("========================================");
+    Console.WriteLine();
+
+    Console.WriteLine($"Name            : {expense.Name}");
+    Console.WriteLine($"Budget Amount   : R{expense.BudgetAmount:N2}");
+
+    if (expense.ActualEntered)
+    {
+        Console.WriteLine($"Actual Amount   : R{expense.ActualAmount:N2}");
     }
+    else
+    {
+        Console.WriteLine("Actual Amount   : Not Entered");
+    }
+
+    Console.WriteLine($"Category        : {expense.Category}");
+    Console.WriteLine($"Frequency       : {expense.Frequency}");
+    Console.WriteLine($"Importance      : {expense.Importance}");
+
+    Console.WriteLine();
+
+    if (expense.ActualEntered)
+    {
+        if (expense.ActualAmount > expense.BudgetAmount)
+        {
+            Console.WriteLine("Status          : Over Budget");
+        }
+        else
+        {
+            Console.WriteLine("Status          : Within Budget");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Status          : Awaiting Actual Entry");
+    }
+
+    Console.WriteLine();
+    Console.WriteLine("----------------------------------------");
+    Console.WriteLine();
+    }
+
+    // new methods before release 
 }

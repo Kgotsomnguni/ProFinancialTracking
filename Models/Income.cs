@@ -11,4 +11,5 @@ public class Income
     public DateTime Date { get; set; }
 
     public string Frequency { get; set; } = string.Empty;
+    public bool ActualEntered { get; set; }
 }

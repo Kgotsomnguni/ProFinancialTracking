@@ -8,6 +8,7 @@ namespace ProFinancialTracking.Models
         public string Category { get; set; } = string.Empty;
         public string Frequency { get; set; } = string.Empty;
         public int Importance { get; set; }
+        public bool ActualEntered { get; set; }
     }
 
 }

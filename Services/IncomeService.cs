@@ -20,8 +20,8 @@ public static class IncomeService
         income.BudgetAmount =
             InputHelper.GetDecimalInput("Budget Amount: ");
 
-        income.ActualAmount =
-            InputHelper.GetDecimalInput("Actual Amount: ");
+        income.ActualAmount = 0;
+        income.ActualEntered = false;
 
         income.Frequency =
             InputHelper.GetRequiredString("Frequency: ");
@@ -49,16 +49,9 @@ public static class IncomeService
             return;
         }
 
-        for(int i = 0; i <AppData.Incomes.Count; i++)
+        for (int i = 0; i < AppData.Incomes.Count; i++)
         {
-            var income = AppData.Incomes[i];
-            Console.WriteLine("--------------------------------");
-            Console.WriteLine($"Index: {i}");
-            Console.WriteLine($"Name: {income.Name}");
-            Console.WriteLine($"Budget: R{income.BudgetAmount}");
-            Console.WriteLine($"Actual: R{income.ActualAmount}");
-            Console.WriteLine($"Frequency: {income.Frequency}");
-            Console.WriteLine($"Date: {income.Date}");
+            DisplayIncome(AppData.Incomes[i], i);
         }
     }
 
@@ -83,7 +76,7 @@ public static class IncomeService
         Income income = AppData.Incomes[index];
         Console.WriteLine();
         Console.WriteLine("Leave field empty to keep current value.");
-        Console.WriteLine($"Name ({income.Name}): ");
+        Console.Write($"Name ({income.Name}): ");
         string name = Console.ReadLine() ?? "";
 
         if (!string.IsNullOrWhiteSpace(name))
@@ -99,7 +92,10 @@ public static class IncomeService
         string actualInput = Console.ReadLine() ?? "";
 
         if (decimal.TryParse(actualInput, out decimal actual))
+        {
             income.ActualAmount = actual;
+            income.ActualEntered = true;
+        }
 
         Console.Write($"Frequency ({income.Frequency}): ");
         string frequency = Console.ReadLine() ?? "";
@@ -127,6 +123,7 @@ public static class IncomeService
         if (index < 0 || index >= AppData.Incomes.Count)
         {
             Console.WriteLine("Invalid index");
+            return;
         }
         Income income = AppData.Incomes[index];
         Console.WriteLine();
@@ -149,5 +146,33 @@ public static class IncomeService
             Console.WriteLine("Delete cancelled");
         }
 
+    }
+
+    //new methods before release
+    private static void DisplayIncome(Income income, int index)
+    {
+
+        Console.WriteLine($"INCOME RECORD #{index}");
+
+        Console.WriteLine();
+
+        Console.WriteLine($"Name            : {income.Name}");
+        Console.WriteLine($"Budget Amount   : R{income.BudgetAmount:N2}");
+        Console.WriteLine($"Actual Amount   : R{income.ActualAmount:N2}");
+        if (income.ActualEntered)
+         {
+             Console.WriteLine($"Actual Amount   : R{income.ActualAmount:N2}");
+         }
+         else
+         {
+             Console.WriteLine("Actual Amount   : Not Entered");
+         }
+
+        Console.WriteLine($"Frequency       : {income.Frequency}");
+        Console.WriteLine($"Date            : {income.Date:yyyy-MM-dd}");
+
+        Console.WriteLine();
+        ConsoleHelper.DisplaySeparator();
+        Console.WriteLine();
     }
 }

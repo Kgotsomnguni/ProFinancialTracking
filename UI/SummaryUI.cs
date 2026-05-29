@@ -1,6 +1,8 @@
 
 using ProFinancialTracking.Services;
 using ProFinancialTracking.Helpers;
+using ProFinancialTracking.Data;
+
 
 namespace ProFinancialTracking.UI;
 
@@ -9,6 +11,7 @@ public static class SummaryUI
     public static void DisplayFinancialSummary()
     {
         Console.Clear();
+
 
         decimal totalIncomeBudget = BudgetService.GetTotalIncomeBudget();
         decimal totalIncomeActual = BudgetService.GetTotalIncomeActual();
@@ -22,6 +25,15 @@ public static class SummaryUI
         decimal expensePercentage = BudgetService.GetExpensePercentage();
         string highestExpense = BudgetService.GetHighestExpense();
 
+
+        // if there is income info then analysis can be done if not prompt user to add income and expense records
+        if (AppData.Expenses.Count == 0 || AppData.Incomes.Count == 0)
+        {
+            Console.WriteLine("No records available please start by inserting records");
+            return;
+        }
+
+
         decimal highestExpenseAmount =
     BudgetService.GetHighestExpenseAmount();
 
@@ -29,60 +41,106 @@ public static class SummaryUI
             BudgetService.GetFinancialHealth();
 
 
-        ConsoleHelper.DisplayHeader("FINANCIAL SUMMARY");
-        Console.WriteLine($"Total Income Budget   :   R{totalIncomeBudget}");
-        Console.WriteLine($"Total Income Actual   :   R{totalIncomeActual}");
+        Console.WriteLine("INCOME");
+        ConsoleHelper.DisplaySeparator();
+
+        Console.WriteLine($"Budget Income     : R{totalIncomeBudget:N2}");
+        Console.WriteLine($"Actual Income     : R{totalIncomeActual:N2}");
+
         Console.WriteLine();
 
-        Console.WriteLine($"Total Expense Budget   :   R{totalExpenseBudget}");
-        Console.WriteLine($"Total Expense Actual   :   R{totalExpenseActual}");
-        Console.WriteLine($"Expenses use {BudgetService.GetPercentage(totalExpenseActual, totalIncomeActual)}% of your income");
+        Console.WriteLine("EXPENSES");
+        ConsoleHelper.DisplaySeparator();
 
-        if (totalExpenseActual > totalExpenseBudget)
-        {
-            Console.WriteLine("Warning: You exceeded your expense budget");
-        }
+        Console.WriteLine($"Budget Expenses   : R{totalExpenseBudget:N2}");
+        Console.WriteLine($"Actual Expenses   : R{totalExpenseActual:N2}");
+
+        Console.WriteLine();
+
+        Console.WriteLine("BALANCE");
+        ConsoleHelper.DisplaySeparator();
+
+        Console.WriteLine($"Remaining Balance : R{remainingBalance:N2}");
+
+        Console.WriteLine();
+
+        Console.WriteLine("STATUS");
+        ConsoleHelper.DisplaySeparator();
 
         if (remainingBalance < 0)
         {
-            Console.WriteLine("Alert: Your Balance is negative");
+            Console.WriteLine("Financial Status  : ALERT - Negative Balance");
         }
-        else if (remainingBalance > 0)
+        else
         {
-            Console.WriteLine("Good: Your finances are positive");
+            Console.WriteLine("Financial Status  : Positive Balance");
         }
 
+        if (totalExpenseActual > totalExpenseBudget)
+        {
+            Console.WriteLine("Budget Status     : OVER BUDGET");
+        }
+        else
+        {
+            Console.WriteLine("Budget Status     : Within Budget");
+        }
 
         Console.WriteLine();
-        ConsoleHelper.DisplayHeader("ANALYSIS");
 
-        Console.WriteLine($"Savings Rate: {savingsRate:F2}:%");
-        Console.WriteLine($"Expense Usage: {expensePercentage:F2}:%");
+        ConsoleHelper.DisplaySection("ANALYSIS");
 
-        Console.WriteLine($"Highest Expense: {highestExpense}");
-        Console.WriteLine($"Highest Expense Amount: R{highestExpenseAmount}");
-        Console.WriteLine($"Financial Health: {financialHealth}");
+        Console.WriteLine($"Savings Rate      : {savingsRate:N2}%");
+        Console.WriteLine($"Expense Usage     : {expensePercentage:N2}%");
+
+        Console.WriteLine();
+
+        Console.WriteLine($"Highest Expense   : {highestExpense}");
+        Console.WriteLine($"Amount            : R{highestExpenseAmount:N2}");
+
+        Console.WriteLine();
+
+        //Console.WriteLine($"Financial Health  : {financialHealth}");
+
+        Console.WriteLine();
+
+        Console.WriteLine("Budget Usage");
+        ConsoleHelper.DisplaySeparator();
+
+        Console.WriteLine(
+            $"Actual Expenses use {BudgetService.GetPercentage(totalExpenseActual, totalIncomeActual):N2}% of actual income");
+
+        Console.WriteLine(
+            $"Budget Expenses use {BudgetService.GetPercentage(totalExpenseBudget, totalIncomeBudget):N2}% of budget income");
 
 
 
-        ConsoleHelper.DisplayHeader(" RECOMMENDATIONS ");
-
+        ConsoleHelper.DisplaySection("RECOMMENDATIONS");
 
         if (expensePercentage > 80)
         {
-            Console.WriteLine(" - Your expenses are consuming most of your income.");
+            Console.WriteLine("- Expenses are consuming most of your income.");
         }
 
         if (savingsRate < 10)
         {
-            Console.WriteLine(" - Try reducing non-essential spending.");
+            Console.WriteLine("- Consider reducing non-essential spending.");
         }
 
         if (financialHealth == "Excellent")
         {
-            Console.WriteLine(
-                "- Your financial health is excellent.");
+            Console.WriteLine("- Your financial health is excellent.");
         }
+
+        if (remainingBalance > 0)
+        {
+            Console.WriteLine("- You still have money available for budgeting.");
+        }
+
+        if (remainingBalance < 0)
+        {
+            Console.WriteLine("- Review expenses and reduce spending.");
+        }
+
     }
 
 }

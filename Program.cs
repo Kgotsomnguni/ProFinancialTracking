@@ -3,13 +3,14 @@ using ProFinancialTracking.Services;
 using ProFinancialTracking.Helpers;
 
 bool running = true;
+StartUpUI.ShowStartUpScreen();
 FileManager.LoadData();
 
 while (running)
 {
     ConsoleHelper.DisplayHeader("PRO FINANCIAL TRACKING V1.0");
 
-   MenuManager.DisplayMainMenu();
+    MenuManager.DisplayMainMenu();
 
     string choice = Console.ReadLine() ?? "";
 
@@ -24,31 +25,31 @@ while (running)
             break;
 
         case "3":
-            ExpenseService.AddExpense();
-            break;
-
-        case "4":
-            ExpenseService.ViewExpenses();
-            break;
-
-        case "5":
-            SummaryUI.DisplayFinancialSummary();
-            break;
-
-        case "6":
-            ExpenseService.EditExpense();
-            break;
-
-        case "7":
-            ExpenseService.DeleteExpense();
-            break;
-
-        case "8":
             IncomeService.EditIncome();
             break;
 
-        case "9":
+        case "4":
             IncomeService.DeleteIncome();
+            break;
+
+        case "5":
+            ExpenseService.AddExpense();
+            break;
+
+        case "6":
+            ExpenseService.ViewExpenses();
+            break;
+
+        case "7":
+            ExpenseService.EditExpense();
+            break;
+
+        case "8":
+            ExpenseService.DeleteExpense();
+            break;
+
+        case "9":
+            SummaryUI.DisplayFinancialSummary();
             break;
 
         case "10":
@@ -66,6 +67,7 @@ while (running)
         case "13":
             running = false;
             break;
+
     }
 
     ConsoleHelper.Pause();

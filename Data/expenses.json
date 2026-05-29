@@ -1,10 +1,11 @@
 [
   {
-    "Name": "TruWorths Account",
+    "Name": "truworths",
     "BudgetAmount": 200,
-    "ActualAmount": 200,
-    "Category": "Bills",
+    "ActualAmount": 0,
+    "Category": "bills",
     "Frequency": "monthly",
-    "Importance": 3
+    "Importance": 2,
+    "ActualEntered": false
   }
 ]

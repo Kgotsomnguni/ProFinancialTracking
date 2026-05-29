@@ -2,8 +2,9 @@
   {
     "Name": "stallion",
     "BudgetAmount": 5500,
-    "ActualAmount": 5500,
-    "Date": "2026-05-17T09:19:03.1325549+02:00",
-    "Frequency": "monthly"
+    "ActualAmount": 0,
+    "Date": "2026-05-29T11:11:26.4930969+02:00",
+    "Frequency": "monthly",
+    "ActualEntered": false
   }
 ]
