@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "AEnEYBOW3fs=",
+  "dgSpecHash": "WWnqf3up1VU=",
   "success": true,
   "projectFilePath": "C:\\Users\\27659\\Desktop\\Software Development\\2026 Projects\\Web Development\\Projects\\ProFinancialTracking\\ProFinancialTracking.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\27659\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\9.0.16\\microsoft.netcore.app.runtime.win-x64.9.0.16.nupkg.sha512",
+    "C:\\Users\\27659\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\9.0.16\\microsoft.windowsdesktop.app.runtime.win-x64.9.0.16.nupkg.sha512",
+    "C:\\Users\\27659\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\9.0.16\\microsoft.aspnetcore.app.runtime.win-x64.9.0.16.nupkg.sha512"
+  ],
   "logs": []
 }
