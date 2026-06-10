@@ -31,6 +31,10 @@ while (running)
             break;
 
         case "4":
+            ShowGoalsMenu();
+            break;
+
+        case "5":
             running = false;
             break;
 
@@ -107,7 +111,31 @@ while (running)
             }
         }
     }
+    static void ShowGoalsMenu()
+    {
+        while (true)
+        {
+            string choice = Console.ReadLine() ?? "";
+            Console.Clear();
+            MenuManager.DisplayGoalsMenu();
 
+            switch (choice)
+            {
+                case "1":
+                    GoalService.AddGoal();
+                    break;
+                case "2":
+                    GoalService.ViewGoals();
+                    break;
+                case "3":
+                    GoalService.ViewGoals();
+                    break;
+                case "4": return;
+
+
+            }
+        }
+    }
     static void ShowReportsMenu()
     {
         while (true)

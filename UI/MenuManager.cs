@@ -57,4 +57,16 @@ public static class MenuManager
         Console.WriteLine();
 
     }
+    public static void DisplayGoalsMenu()
+    {
+        Console.Clear();
+
+        ConsoleHelper.DisplayHeader("SAVINGS GOALS");
+
+        Console.WriteLine("1. Add Goal");
+        Console.WriteLine("2. View Goal");
+        Console.WriteLine("3. Update Goal");
+        Console.WriteLine("4. Back");
+
+    }
 }
