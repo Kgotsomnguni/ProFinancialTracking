@@ -8,28 +8,53 @@ public static class MenuManager
     {
 
 
-        ConsoleHelper.DisplayHeader("MAIN MENU");
+        ConsoleHelper.DisplayHeader("PRO FINANCIAL TRACKING V1.1.0");
+        ConsoleHelper.DisplaySection("MAIN MENU");
+        Console.WriteLine("1. Income Management");
+        Console.WriteLine("2. Expense Management");
+        Console.WriteLine("3. Reports and Analysis");
+        Console.WriteLine("4. Exit ");
+
+
+
+    }
+
+    public static void DisplayIncomeMenu()
+    {
+        Console.Clear();
+
+        ConsoleHelper.DisplayHeader("INCOME MANAGEMENT");
+
         Console.WriteLine("1. Add Income");
-        Console.WriteLine("2. View Income");
+        Console.WriteLine("2. ViewIncomes");
         Console.WriteLine("3. Edit Income");
         Console.WriteLine("4. Delete Income");
+        Console.WriteLine("5. Back");
 
-        ConsoleHelper.DisplaySection("Expenses");
-        Console.WriteLine("5. Add Expense");
-        Console.WriteLine("6. View Expense");
-        Console.WriteLine("7. Edit Expense");
-        Console.WriteLine("8. Delete Expense");
+    }
+    public static void DisplayExpensesMenu()
+    {
+        Console.Clear();
 
-        ConsoleHelper.DisplaySection("Analysis");
-        Console.WriteLine("9. Financial Summary");
-        Console.WriteLine("10. Search Expenses");
-        Console.WriteLine("11. Filter By Category ");
-        Console.WriteLine("12. Sort Expenses By Amount ");
+        ConsoleHelper.DisplayHeader("EXPENSE MANAGEMENT");
 
-        ConsoleHelper.DisplaySection("System");
-        Console.WriteLine("13. Exit ");
+        Console.WriteLine("1. Add Expense");
+        Console.WriteLine("2. View Expenses");
+        Console.WriteLine("3. Edit Expense");
+        Console.WriteLine("4. Delete Expenses");
+        Console.WriteLine("5. Search Expenses");
+        Console.WriteLine("6. Filter Expenses");
+        Console.WriteLine("7. Sort Expenses");
+        Console.WriteLine("8. Back");
+    }
 
-
+    public static void DisplayReportsMenu()
+    {
+        Console.Clear();
+        ConsoleHelper.DisplayHeader("REPORTS AND ANALYSIS");
+        Console.WriteLine("1. Financial Summary");
+        Console.WriteLine(" 2. Back");
+        Console.WriteLine();
 
     }
 }

@@ -1,10 +1,12 @@
 ﻿using ProFinancialTracking.UI;
 using ProFinancialTracking.Services;
 using ProFinancialTracking.Helpers;
+using System.Security.Cryptography.X509Certificates;
 
 bool running = true;
 StartUpUI.ShowStartUpScreen();
 FileManager.LoadData();
+DashBoardUI.DisplayDashBoard();
 
 while (running)
 {
@@ -17,58 +19,115 @@ while (running)
     switch (choice)
     {
         case "1":
-            IncomeService.AddIncome();
+            ShowIncomeMenu();
             break;
 
         case "2":
-            IncomeService.ViewIncomes();
+            ShowExpenseMenu();
             break;
 
         case "3":
-            IncomeService.EditIncome();
+            ShowReportsMenu();
             break;
 
         case "4":
-            IncomeService.DeleteIncome();
-            break;
-
-        case "5":
-            ExpenseService.AddExpense();
-            break;
-
-        case "6":
-            ExpenseService.ViewExpenses();
-            break;
-
-        case "7":
-            ExpenseService.EditExpense();
-            break;
-
-        case "8":
-            ExpenseService.DeleteExpense();
-            break;
-
-        case "9":
-            SummaryUI.DisplayFinancialSummary();
-            break;
-
-        case "10":
-            ExpenseService.SearchExpenses();
-            break;
-
-        case "11":
-            ExpenseService.FilterByCategory();
-            break;
-
-        case "12":
-            ExpenseService.SortByExpenseAmount();
-            break;
-
-        case "13":
             running = false;
             break;
+
+
 
     }
 
     ConsoleHelper.Pause();
+
+    static void ShowIncomeMenu()
+    {
+
+        while (true)
+        {
+            string choice = Console.ReadLine() ?? "";
+
+            Console.Clear();
+            MenuManager.DisplayIncomeMenu();
+
+            switch (choice)
+            {
+                case "1":
+                    IncomeService.AddIncome();
+                    break;
+                case "2":
+                    IncomeService.ViewIncomes();
+                    break;
+                case "3":
+                    IncomeService.EditIncome();
+                    break;
+                case "4":
+                    IncomeService.DeleteIncome();
+                    break;
+                case "5": return;
+
+            }
+
+        }
+    }
+
+    static void ShowExpenseMenu()
+    {
+        while (true)
+        {
+            Console.Clear();
+            MenuManager.DisplayExpensesMenu();
+
+            string choice = Console.ReadLine() ?? "";
+            switch (choice)
+            {
+                case "1":
+                    ExpenseService.AddExpense();
+                    break;
+                case "2":
+                    ExpenseService.ViewExpenses();
+                    break;
+                case "3":
+                    ExpenseService.EditExpense();
+                    break;
+                case "4":
+                    ExpenseService.DeleteExpense();
+                    break;
+                case "5":
+                    ExpenseService.SearchExpenses();
+                    break;
+                case "6":
+                    ExpenseService.FilterByCategory();
+                    break;
+                case "7":
+                    ExpenseService.SortByExpenseAmount();
+                    break;
+                case "8": return;
+
+            }
+        }
+    }
+
+    static void ShowReportsMenu()
+    {
+        while (true)
+        {
+            string choice = Console.ReadLine() ?? "";
+
+            Console.Clear();
+            MenuManager.DisplayReportsMenu();
+
+            switch (choice)
+            {
+                case "1":
+                    SummaryUI.DisplayFinancialSummary();
+                    break;
+                case "2": return;
+
+            }
+        }
+    }
+
 }
+
+

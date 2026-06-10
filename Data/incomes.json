@@ -1,10 +1,10 @@
 [
   {
-    "Name": "stallion",
+    "Name": "Stallion Security",
     "BudgetAmount": 5500,
-    "ActualAmount": 0,
-    "Date": "2026-05-29T11:11:26.4930969+02:00",
+    "ActualAmount": 5870,
+    "Date": "2026-05-30T07:56:07.7246662+02:00",
     "Frequency": "monthly",
-    "ActualEntered": false
+    "ActualEntered": true
   }
 ]
