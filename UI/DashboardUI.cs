@@ -33,17 +33,31 @@ public static class DashBoardUI
 
         ConsoleHelper.DisplayHeader("PRO FINANCIAL TRACKING DASHBOARD");
 
-        Console.WriteLine($"Budget Income       :R{totalIncomeBudget:N2}");
-        Console.WriteLine($"Budget expenses       :R{totalExpenseBudget:N2}");
+         Console.WriteLine(
+            $"Budget Income      : R{totalIncomeBudget:N2}");
+
+        Console.WriteLine(
+            $"Budget Expenses    : R{totalExpenseBudget:N2}");
+
         Console.WriteLine();
-        Console.WriteLine($"Remaining Balance       :R{remainingBalance:N2}");
-        Console.WriteLine($"Savings Rate            :{savingsRate:N2}%");
-        Console.WriteLine($"Financial Health       :R{financialHealth}");
+
+        Console.WriteLine(
+            $"Remaining Balance  : R{remainingBalance:N2}");
+
+        Console.WriteLine();
+
+        Console.WriteLine(
+            $"Savings Rate       : {savingsRate:N2}%");
+
+        Console.WriteLine(
+            $"Financial Health   : {financialHealth}");
 
         Console.WriteLine();
 
         ConsoleHelper.DisplaySeparator();
-        Console.WriteLine("Press Enter to continue");
+
+        Console.WriteLine(
+            "Press Enter to Continue...");
 
         Console.ReadLine();
 

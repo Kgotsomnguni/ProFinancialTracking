@@ -150,8 +150,13 @@ while (running)
                 case "1":
                     SummaryUI.DisplayFinancialSummary();
                     break;
-                case "2": return;
 
+                case "2":
+                    ReportUI.DisplayMonthlyReport();
+                    break;
+
+                case "3":
+                    return;
             }
         }
     }

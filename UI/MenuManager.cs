@@ -53,7 +53,8 @@ public static class MenuManager
         Console.Clear();
         ConsoleHelper.DisplayHeader("REPORTS AND ANALYSIS");
         Console.WriteLine("1. Financial Summary");
-        Console.WriteLine(" 2. Back");
+        Console.WriteLine(" 2. Monthly Report");
+        Console.WriteLine(" 3. Back");
         Console.WriteLine();
 
     }
