@@ -156,6 +156,9 @@ while (running)
                     break;
 
                 case "3":
+                    ReportExportService.ExportMonthlyReport();
+                    break;
+                case "4":
                     return;
             }
         }

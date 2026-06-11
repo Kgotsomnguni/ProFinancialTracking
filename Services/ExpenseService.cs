@@ -56,7 +56,7 @@ public static class ExpenseService
         Console.Clear();
 
         //Console.WriteLine("===== ALL EXPENSES =====");
-        ConsoleHelper.DisplayHeader("ALL EXPENSES");
+        //ConsoleHelper.DisplayHeader("ALL EXPENSES");
 
 
         if (AppData.Expenses.Count == 0)
