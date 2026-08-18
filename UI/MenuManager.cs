@@ -13,9 +13,8 @@ public static class MenuManager
         Console.WriteLine("1. Income Management");
         Console.WriteLine("2. Expense Management");
         Console.WriteLine("3. Reports and Analysis");
-        Console.WriteLine("4. Exit ");
-
-
+        Console.WriteLine("4. Savings Goals");
+        Console.WriteLine("5. Exit");
 
     }
 
@@ -55,7 +54,8 @@ public static class MenuManager
         Console.WriteLine("1. Financial Summary");
         Console.WriteLine(" 2. Monthly Report");
         Console.WriteLine(" 3. Export Monthly Report");
-        Console.WriteLine(" 4. Back");
+        Console.WriteLine(" 4. Expense Statistics");
+        Console.WriteLine(" 5. Back");
 
         Console.WriteLine();
 

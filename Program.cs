@@ -158,8 +158,9 @@ while (running)
                 case "3":
                     ReportExportService.ExportMonthlyReport();
                     break;
-                case "4":
-                    return;
+                case "4": StatisticsUI.DisplayExpenseStatistics();
+                    break;
+                case "5": return;
             }
         }
     }

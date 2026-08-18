@@ -1,0 +1,33 @@
+
+========================================
+MONTHLY FINANCIAL REPORT
+========================================
+
+Generated:
+18/08/2026 21:47:48
+
+INCOME
+----------------------------------------
+Budget Income     : R0.00
+Actual Income     : R0.00
+
+EXPENSES
+----------------------------------------
+Budget Expenses   : R1,302.00
+Actual Expenses   : R0.00
+
+BALANCE
+----------------------------------------
+Remaining Balance : R0.00
+
+ANALYSIS
+----------------------------------------
+Savings Rate      : 0.00%
+Expense Usage     : 0.00%
+
+Highest Expense   : truworths
+Financial Health  : Risky
+
+========================================
+END OF REPORT
+========================================
