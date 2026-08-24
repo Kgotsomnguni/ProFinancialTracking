@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ProFinancialTracking")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c62e9fe8c27da2bd49aa6095818d05a3617386e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0dc66dbd82d68e0fce88c7c96e004b41b48d5e7c")]
 [assembly: System.Reflection.AssemblyProductAttribute("ProFinancialTracking")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ProFinancialTracking")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

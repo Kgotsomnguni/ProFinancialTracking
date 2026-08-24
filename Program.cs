@@ -167,6 +167,9 @@ while (running)
                 case "6":
                     CategoryAnalysisUI.DisplayCategoryAnalysis();
                     break;
+                case "7":
+                    ForecastUI.DisplayForecast();
+                    break;
             }
         }
     }
