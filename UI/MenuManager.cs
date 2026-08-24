@@ -55,7 +55,10 @@ public static class MenuManager
         Console.WriteLine(" 2. Monthly Report");
         Console.WriteLine(" 3. Export Monthly Report");
         Console.WriteLine(" 4. Expense Statistics");
-        Console.WriteLine(" 5. Back");
+        Console.WriteLine(" 5. Financial Health Score");
+        Console.WriteLine(" 6. Category Spending Analysis");
+        Console.WriteLine(" 7. Back");
+
 
         Console.WriteLine();
 
