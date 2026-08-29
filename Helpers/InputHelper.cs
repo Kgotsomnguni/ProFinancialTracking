@@ -44,7 +44,7 @@ public static class InputHelper
     public static string GetRequiredString(string prompt)
     {
 
-        while (true)
+        while (true )
         {
             Console.Write(prompt);
 
@@ -54,6 +54,7 @@ public static class InputHelper
                 return input;
             }
             Console.WriteLine("Input cannot be empty. Please enter a valid string.");
+
         }
 
 
@@ -66,6 +67,57 @@ public static class InputHelper
             return;
         }
     }
+    
+    public static bool GetConfirmation(string message)
+{
+    Console.Write($"{message} (Y/N): ");
+
+    string input =
+        Console.ReadLine()?.Trim().ToUpper() ?? "";
+
+    return input == "Y";
+}
+
+public static string? GetInput(string prompt)
+{
+    Console.Write(prompt);
+
+    string input = "";
+
+    while (true)
+    {
+        ConsoleKeyInfo key = Console.ReadKey(true);
+
+        if (key.Key == ConsoleKey.Escape)
+        {
+            Console.WriteLine();
+            return null;
+        }
+
+        if (key.Key == ConsoleKey.Enter)
+        {
+            Console.WriteLine();
+            return input;
+        }
+
+        if (key.Key == ConsoleKey.Backspace)
+        {
+            if (input.Length > 0)
+            {
+                input = input[..^1];
+                Console.Write("\b \b");
+            }
+
+            continue;
+        }
+
+        if (!char.IsControl(key.KeyChar))
+        {
+            input += key.KeyChar;
+            Console.Write(key.KeyChar);
+        }
+    }
+}
 
 
 

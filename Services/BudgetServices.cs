@@ -88,7 +88,7 @@ public static class BudgetService
             return "Excellent";
 
         if (savingsRate >= 20)
-            return "healthy";
+            return "Healthy";
 
         if (savingsRate >= 10)
             return "Moderate";

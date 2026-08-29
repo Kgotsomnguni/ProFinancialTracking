@@ -22,34 +22,33 @@ public static class ForecastService
         if (projected == 0)
             return "Break Even";
 
-
         if (projected < 1000)
-            return "Break-even";
+            return "Warning";
 
         return "Healthy";
     }
 
     public static string GetForecastRecommendation()
-{
-    string status =
-        GetForecastStatus();
-
-    return status switch
     {
-        "Healthy" =>
-            "You are on track to remain within budget.",
+        string status =
+            GetForecastStatus();
 
-        "Warning" =>
-            "Monitor your spending closely for the rest of the month.",
+        return status switch
+        {
+            "Healthy" =>
+                "You are on track to remain within budget.",
 
-        "Break Even" =>
-            "Any additional spending may exceed your budget.",
+            "Warning" =>
+                "Monitor your spending closely for the rest of the month.",
 
-        "Critical" =>
-            "Reduce expenses immediately or increase income.",
+            "Break Even" =>
+                "Any additional spending may exceed your budget.",
 
-        _ =>
-            "No recommendation available."
-    };
-}
+            "Critical" =>
+                "Reduce expenses immediately or increase income.",
+
+            _ =>
+                "No recommendation available."
+        };
+    }
 }

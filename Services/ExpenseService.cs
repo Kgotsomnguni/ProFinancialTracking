@@ -271,16 +271,6 @@ public static class ExpenseService
     private static void DisplayExpense(Expense expense, int index)
     {
         ConsoleHelper.DisplaySeparator();
-
-        Console.WriteLine($"Index: {index}");
-        Console.WriteLine($"Name: {expense.Name}");
-        Console.WriteLine($"Budget: R{expense.BudgetAmount}");
-        Console.WriteLine($"Actual: R{expense.ActualAmount}");
-        Console.WriteLine($"Category: {expense.Category}");
-        Console.WriteLine($"Frequency: {expense.Frequency}");
-        Console.WriteLine($"Importance: {expense.Importance}");
-
-
 Console.WriteLine("========================================");
     Console.WriteLine($"EXPENSE RECORD #{index}");
     Console.WriteLine("========================================");

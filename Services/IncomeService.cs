@@ -14,8 +14,24 @@ public static class IncomeService
 
         Income income = new();
 
-        income.Name =
-            InputHelper.GetRequiredString("Income Name: ");
+        string? name =
+    InputHelper.GetInput("Income Name (ESC to cancel): ");
+
+        if (name == null)
+        {
+            Console.WriteLine("Add income cancelled.");
+            Console.WriteLine("Press any key to return to Income menu...");
+            Console.ReadLine();
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            Console.WriteLine("Income name cannot be empty.");
+            return;
+        }
+
+        income.Name = name;
 
         income.BudgetAmount =
             InputHelper.GetDecimalInput("Budget Amount: ");
@@ -53,6 +69,7 @@ public static class IncomeService
         {
             DisplayIncome(AppData.Incomes[i], i);
         }
+        Console.ReadLine();
     }
 
     public static void EditIncome()
@@ -158,15 +175,15 @@ public static class IncomeService
 
         Console.WriteLine($"Name            : {income.Name}");
         Console.WriteLine($"Budget Amount   : R{income.BudgetAmount:N2}");
-        Console.WriteLine($"Actual Amount   : R{income.ActualAmount:N2}");
+
         if (income.ActualEntered)
-         {
-             Console.WriteLine($"Actual Amount   : R{income.ActualAmount:N2}");
-         }
-         else
-         {
-             Console.WriteLine("Actual Amount   : Not Entered");
-         }
+        {
+            Console.WriteLine($"Actual Amount   : R{income.ActualAmount:N2}");
+        }
+        else
+        {
+            Console.WriteLine("Actual Amount   : Not Entered");
+        }
 
         Console.WriteLine($"Frequency       : {income.Frequency}");
         Console.WriteLine($"Date            : {income.Date:yyyy-MM-dd}");
@@ -175,4 +192,8 @@ public static class IncomeService
         ConsoleHelper.DisplaySeparator();
         Console.WriteLine();
     }
+
+    // method created to alter input for when a user wants to go back
+
+
 }

@@ -9,17 +9,20 @@ public static class FileManager
     private static readonly string incomeFilePath = "Data/incomes.json";
 
     private static readonly string expenseFilePath = "Data/expenses.json";
+    private static readonly string goalFilePath = "Data/goals.json";
 
     public static void SaveData()
     {
         SaveIncomes();
         SaveExpenses();
+        SaveGoals();
     }
 
     public static void LoadData()
     {
         LoadIncomes();
         LoadExpenses();
+       LoadGoals();
     }
 
     private static void SaveIncomes()
@@ -39,16 +42,23 @@ public static class FileManager
 
         File.WriteAllText(expenseFilePath, json);
     }
+    private static void SaveGoals()
+    {
+        string json = JsonSerializer.Serialize(
+            AppData.Goals,
+            new JsonSerializerOptions { WriteIndented = true });
+
+        File.WriteAllText(goalFilePath, json);
+    }
 
     private static void LoadIncomes()
     {
         try
         {
             if (!File.Exists(incomeFilePath))
-            {
-                Console.WriteLine("Income file not found.");
-                return;
-            }
+{
+    return;
+}
 
             string json = File.ReadAllText(incomeFilePath);
 
@@ -75,11 +85,11 @@ public static class FileManager
     {
         try
         {
-            if (!File.Exists(expenseFilePath))
-            {
-                Console.WriteLine("Expense file not found.");
-                return;
-            }
+ if (!File.Exists(goalFilePath))
+{
+    Console.WriteLine("Goal file not found.");
+    return;
+}
 
             string json = File.ReadAllText(expenseFilePath);
 
@@ -101,4 +111,34 @@ public static class FileManager
             Console.WriteLine($"Expense Load Error: {ex.Message}");
         }
     }
+
+    
+    private static void LoadGoals()
+{
+    try
+    {
+        if (!File.Exists(goalFilePath))
+        {
+            Console.WriteLine("Goal file not found.");
+            return;
+        }
+
+        string json = File.ReadAllText(goalFilePath);
+
+        List<SavingsGoal>? goals =
+            JsonSerializer.Deserialize<List<SavingsGoal>>(json);
+
+        if (goals != null)
+        {
+            AppData.Goals = goals;
+
+            Console.WriteLine($"Loaded {goals.Count} goals.");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Goal Load Error: {ex.Message}");
+    }
+}
+    
 }

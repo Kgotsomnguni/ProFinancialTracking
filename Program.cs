@@ -10,7 +10,9 @@ DashBoardUI.DisplayDashBoard();
 
 while (running)
 {
-    ConsoleHelper.DisplayHeader("PRO FINANCIAL TRACKING V1.0");
+    ConsoleHelper.DisplayHeader("PRO FINANCIAL TRACKING");
+Console.WriteLine("Version 1.1");
+    
 
     MenuManager.DisplayMainMenu();
 
@@ -49,10 +51,11 @@ while (running)
 
         while (true)
         {
-            string choice = Console.ReadLine() ?? "";
+
 
             Console.Clear();
             MenuManager.DisplayIncomeMenu();
+            string choice = Console.ReadLine() ?? "";
 
             switch (choice)
             {
@@ -69,6 +72,11 @@ while (running)
                     IncomeService.DeleteIncome();
                     break;
                 case "5": return;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine("Press enter to continue...");
+
+                    break;
 
             }
 
@@ -128,9 +136,10 @@ while (running)
                     GoalService.ViewGoals();
                     break;
                 case "3":
-                    GoalService.ViewGoals();
+                    GoalService.UpdateGoal();
                     break;
-                case "4": return;
+                case "4":
+                    return;
 
 
             }
@@ -170,10 +179,19 @@ while (running)
                 case "7":
                     ForecastUI.DisplayForecast();
                     break;
+                case "8": return;
+                default:
+                    Console.WriteLine("Invalid option.");
+                    Console.WriteLine("Press Enter to continue...");
+                    Console.ReadLine();
+                    break;
             }
+
+
         }
     }
-
 }
+
+
 
 

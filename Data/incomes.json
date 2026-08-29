@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "Name": "a",
+    "BudgetAmount": 1,
+    "ActualAmount": 0,
+    "Date": "2026-08-29T22:31:24.4003451+02:00",
+    "Frequency": "1",
+    "ActualEntered": false
+  }
+]

@@ -1,6 +1,7 @@
 using ProFinancialTracking.Models;
 using ProFinancialTracking.Helpers;
 using ProFinancialTracking.Data;
+using ProFinancialTracking.Services;
 using System.ComponentModel.Design.Serialization;
 
 namespace ProFinancialTracking.Services;
@@ -17,6 +18,7 @@ public static class GoalService
 
         goal.CurrentAmount = 0;
         AppData.Goals.Add(goal);
+        FileManager.SaveData();
 
         Console.WriteLine();
         Console.WriteLine("Goal added successfully. ");

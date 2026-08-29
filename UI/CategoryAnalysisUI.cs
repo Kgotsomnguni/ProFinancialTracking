@@ -1,5 +1,6 @@
 using ProFinancialTracking.Helpers;
 using ProFinancialTracking.Services;
+using ProFinancialTracking.Data;
 
 namespace ProFinancialTracking.UI;
 
@@ -7,10 +8,17 @@ public static class CategoryAnalysisUI
 {
     public static void DisplayCategoryAnalysis()
     {
+        
         Console.Clear();
 
         ConsoleHelper.DisplayHeader(
             "CATEGORY SPENDING ANALYSIS");
+            if (AppData.Expenses.Count == 0)
+{
+    Console.WriteLine("No expense data available.");
+    Console.WriteLine("Please add expenses before viewing category analysis.");
+    return;
+}
 
         var totals = CategoryAnalysisService.GetCategoryTotals();
         var percentages = CategoryAnalysisService.GetCategoryPercentages();

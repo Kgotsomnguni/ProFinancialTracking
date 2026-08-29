@@ -106,11 +106,11 @@ public static class SummaryUI
         Console.WriteLine("Budget Usage");
         ConsoleHelper.DisplaySeparator();
 
-        Console.WriteLine(
-            $"Actual Expenses use {BudgetService.GetPercentage(totalExpenseActual, totalIncomeActual):N2}% of actual income");
+       Console.WriteLine(
+    $"Actual Expense Usage : {BudgetService.GetPercentage(totalExpenseActual, totalIncomeActual):N2}%");
 
-        Console.WriteLine(
-            $"Budget Expenses use {BudgetService.GetPercentage(totalExpenseBudget, totalIncomeBudget):N2}% of budget income");
+Console.WriteLine(
+    $"Budget Expense Usage : {BudgetService.GetPercentage(totalExpenseBudget, totalIncomeBudget):N2}%");
 
 
 
@@ -133,7 +133,8 @@ public static class SummaryUI
 
         if (remainingBalance > 0)
         {
-            Console.WriteLine("- You still have money available for budgeting.");
+           Console.WriteLine(
+    $"You may still budget for Remaining Balance: R{remainingBalance:f2}");
         }
 
         if (remainingBalance < 0)
